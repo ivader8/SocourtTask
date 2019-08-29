@@ -38,9 +38,10 @@ The server is running on nodeJS / Express
   - Book: should have a name, author, genre & dates of creation and last update
   - Genre: should have a name & dates of creation and last update
 3. Create API Endpoints for:
+  - create books (bonus) ```I have to do it even though it's not explcitly asked api/book/create```
   - Getting the information about a single book: ```/api/book/:id```
   - Getting a list of all books: ```/api/books```
-  - Getting a list of books by genre: ```/api/genre/:id```
+  - Getting a list of books by genre: ```/api/genre/:id``` 
   - Getting a list of genres: ```/api/genres```
   - Search books by name: ```/api/books/search``` ( Should be a post method with a search param)
   - Search books by genre name: ```/api/genres/search``` ( Should be a post method with a search param)
