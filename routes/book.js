@@ -1,10 +1,14 @@
 const express = require('express')
 const authCheck = require('../config/auth-check')
 const Book = require('../models/Book')
+const Genre = require('../models/Genre.js')
 
 const router = new express.Router()
 
+
+
 function validateBookCreateForm(payload) {
+
   const errors = {}
   let isFormValid = true
   let message = ''
@@ -20,23 +24,10 @@ function validateBookCreateForm(payload) {
     isFormValid = false
     errors.genre = 'Genre must be at least 5 symbols and no more than 20 symbols.'
   }
-  if (!payload || typeof payload.author !== 'string' || payload.genre.author < 2 ) {
+  if (!payload || typeof payload.author !== 'string' || payload.genre.author < 2) {
     isFormValid = false
     errors.author = 'Author must be at least 2 symbols.'
   }
-
-
-  // if (!payload || !payload.price || payload.price < 0) {
-  //   isFormValid = false
-  //   errors.price = 'Price must be a positive number.'
-  // }
-
-
-
-  // if (!payload || typeof payload.image !== 'string' || !(payload.image.startsWith('https://') || payload.image.startsWith('http://')) || payload.image.length < 14) {
-  //   isFormValid = false
-  //   errors.image = 'Please enter valid Image URL. Image URL must be at least 14 symbols.'
-  // }
 
   if (!isFormValid) {
     message = 'Check the form for errors.'
@@ -48,24 +39,23 @@ function validateBookCreateForm(payload) {
     errors
   }
 }
-
 router.post('/create', (req, res) => {
   const bookObj = req.body
   const validationResult = validateBookCreateForm(bookObj)
-    if (!validationResult.success) {
-      return res.status(200).json({
-        success: false,
-        message: validationResult.message,
-        errors: validationResult.errors
-      })
-    }
+  if (!validationResult.success) {
+    return res.status(200).json({
+      success: false,
+      message: validationResult.message,
+      errors: validationResult.errors
+    })
+  }
 
-    if (validationResult.success){
-      
-      console.log('successs')
-      console.log(bookObj)
-    
-      Book
+  if (validationResult.success) {
+
+    console.log('successs')
+    console.log(bookObj)
+
+    Book
       .create(bookObj)
       .then((createdBook) => {
         res.status(200).json({
@@ -85,45 +75,35 @@ router.post('/create', (req, res) => {
           message: message
         })
       })
+
+    const findGenre = (async () => {
+
+      try {
+        let genre = await Genre.findOne({
+          name: bookObj.genre
+        });
+
+        let genreName = bookObj.genre;
+        let genreBook = bookObj.title;
+
+        if (!genre) {
+                    //TODO get bookID and create for it 
+          let genre = await Genre.create({
+            name: genreName, books: [genreBook]
+
+          })
+        } else {
+          //add book title to array
+          await Genre.findOneAndUpdate({name:genreName},{$push:{books:genreBook}})
+        }
+
+      } catch (error) {
+        console.log(error)
+      }
     }
-    
+    )()
 
-  // if (req.user.roles.indexOf('Admin') > -1) {
-  //   const validationResult = validateBookCreateForm(bookObj)
-  //   if (!validationResult.success) {
-  //     return res.status(200).json({
-  //       success: false,
-  //       message: validationResult.message,
-  //       errors: validationResult.errors
-  //     })
-  //   }
-
-  //   Book
-  //     .create(bookObj)
-  //     .then((createdBook) => {
-  //       res.status(200).json({
-  //         success: true,
-  //         message: 'Book added successfully.',
-  //         data: createdBook
-  //       })
-  //     })
-  //     .catch((err) => {
-  //       console.log(err)
-  //       let message = 'Something went wrong :( Check the form for errors.'
-  //       if (err.code === 11000) {
-  //         message = 'Book with the given name already exists.'
-  //       }
-  //       return res.status(200).json({
-  //         success: false,
-  //         message: message
-  //       })
-  //     })
-  // } else {
-  //   return res.status(200).json({
-  //     success: false,
-  //     message: 'Invalid credentials!'
-  //   })
-  // }
+  }
 })
 
 router.post('/edit/:id', authCheck, (req, res) => {
@@ -253,101 +233,9 @@ router.post('/review/:id', authCheck, (req, res) => {
     })
 })
 
-router.post('/like/:id', authCheck, (req, res) => {
-  const id = req.params.id
-  const username = req.user.username
-  Book
-    .findById(id)
-    .then(book => {
-      if (!book) {
-        const message = 'Product not found.'
-        return res.status(200).json({
-          success: false,
-          message: message
-        })
-      }
 
-      let likes = book.likes
-      if (!likes.includes(username)) {
-        likes.push(username)
-      }
-      book.likes = likes
-      book
-        .save()
-        .then((book) => {
-          res.status(200).json({
-            success: true,
-            message: 'Book liked successfully.',
-            data: book
-          })
-        })
-        .catch((err) => {
-          console.log(err)
-          const message = 'Something went wrong :('
-          return res.status(200).json({
-            success: false,
-            message: message
-          })
-        })
-    })
-    .catch((err) => {
-      console.log(err)
-      const message = 'Something went wrong :('
-      return res.status(200).json({
-        success: false,
-        message: message
-      })
-    })
-})
 
-router.post('/unlike/:id', authCheck, (req, res) => {
-  const id = req.params.id
-  const username = req.user.username
-  Book
-    .findById(id)
-    .then(book => {
-      if (!book) {
-        let message = 'Product not found.'
-        return res.status(200).json({
-          success: false,
-          message: message
-        })
-      }
 
-      let likes = book.likes
-      if (likes.includes(username)) {
-        const index = likes.indexOf(username)
-        likes.splice(index, 1)
-      }
-
-      book.likes = likes
-      book
-        .save()
-        .then((book) => {
-          res.status(200).json({
-            success: true,
-            message: 'Product unliked successfully.',
-            data: book
-          })
-        })
-        .catch((err) => {
-          console.log(err)
-          const message = 'Something went wrong :('
-          return res.status(200).json({
-            success: false,
-            message: message
-          })
-        })
-    })
-    .catch((err) => {
-      console.log(err)
-      const message = 'Something went wrong :('
-      return res.status(200).json({
-        success: false,
-        message: message
-      })
-    })
-})
 
 router.delete('/delete/:id', authCheck, (req, res) => {
   const id = req.params.id

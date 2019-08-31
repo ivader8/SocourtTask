@@ -7,7 +7,12 @@ let genreSchema = mongoose.Schema({
   name: {type: mongoose.Schema.Types.String, required: REQUIRED_VALIDATION_MESSAGE},
  
   dataCreated: {type: mongoose.Schema.Types.Date, default: new Date()},
-  lastUpdated: {type: mongoose.Schema.Types.Date, required: REQUIRED_VALIDATION_MESSAGE},
+  lastUpdated: {type: mongoose.Schema.Types.Date, default: new Date()},
+  books : [{
+    type: mongoose.Schema.Types.String,
+    ref: 'Book',
+    required: true
+  }]
  
   // date: {
   //   // type: mongoose.Schema.Types.Date, required: REQUIRED_VALIDATION_MESSAGE, 

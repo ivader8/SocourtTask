@@ -1,10 +1,11 @@
 import React, { Component, Fragment } from 'react';
 import { BrowserRouter as Router, Route, Switch } from 'react-router-dom'
 
-import logo from './logo.svg';
-
-import './App.css';
+import './index.css';
 import CreateBook from './components/create-book';
+import Navbar from './components/navbar';
+import Home from './components/home';
+import AllBooks from './components/allBooks';
 
 
 class App extends Component {
@@ -12,30 +13,35 @@ class App extends Component {
     response: ''
   };
 
-  componentDidMount() {
-    this.callApi()
-      .then(res => this.setState({ response: res.express }))
-      .catch(err => console.log(err));
-  }
+  // componentDidMount() {
+  //   this.callApi()
+  //     .then(res => this.setState({ response: res.express }))
+  //     .catch(err => console.log(err));
+  // }
 
-  callApi = async () => {
-    const response = await fetch('/api/hello');
-    const body = await response.json();
+  // callApi = async () => {
+  //   const response = await fetch('/api/hello');
+  //   const body = await response.json();
 
-    if (response.status !== 200) throw Error(body.message);
+  //   if (response.status !== 200) throw Error(body.message);
 
-    return body;
-  };
+  //   return body;
+  // };
 
   render() {
     return (
-      <div>
-        <Router>
+
+      <Router>
+        <Fragment>
+          <Navbar />
           <Switch>
-            <Route path = "/" exact component = {CreateBook}/>
+            <Route path="/" exact component = {Home}/>
+            <Route path="/addBook" exact component={CreateBook} />
+            <Route path="/books" exact component = {AllBooks} />
           </Switch>
-        </Router>
-      </div>
+        </Fragment>
+      </Router>
+
     );
   }
 }

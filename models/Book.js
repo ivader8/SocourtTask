@@ -8,7 +8,7 @@ let bookSchema = new mongoose.Schema({
   genre: {type: mongoose.Schema.Types.String, ref:"Genre", required: REQUIRED_VALIDATION_MESSAGE,},
   author: {type: mongoose.Schema.Types.String, required: REQUIRED_VALIDATION_MESSAGE,},
   dataCreated: {type: mongoose.Schema.Types.Date, default: new Date()},
-  lastUpdated: {type: mongoose.Schema.Types.Date, required:false}
+  lastUpdated: {type: mongoose.Schema.Types.Date, default: new Date()}
 })
 
 let Book = mongoose.model('Book', bookSchema)

@@ -65,7 +65,7 @@ class CreateBook extends Component {
 
         return (
             <main>
-                <div class="form-wrapper">
+                <div class="container">
                     {
                         error.length
                             ? <div>Something went wrong: {error}</div>
