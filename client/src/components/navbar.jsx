@@ -1,4 +1,5 @@
 import React, { Component } from 'react'
+import { Link } from 'react-router-dom'
 import logo from '../images/logo.svg'
 import ham from '../images/ham.svg'
 import exit from '../images/exit.svg'
@@ -23,19 +24,19 @@ export default class Navbar extends Component {
         return (
             <div className="container">
                 <header>
-                    <a href="/"><img src={logo} alt="yBudget logo" className="logo" /></a>
+                    <Link to="/"><img src={logo} alt="yBudget logo" className="logo" /></Link>
                     <nav>
-                        <a href="#" className="hide-desktop" onClick={showMenu}>
+                        <Link to="#" className="hide-desktop" onClick={showMenu}>
                             <img src={ham} alt="toggle menu" className="menu" id="menu" />
-                        </a>
+                        </Link>
 
                         <ul className="show-desktop hide-mobile" id="nav">
                             <li id="exit" className="exit-btn hide-desktop">
                                 <img src={exit} alt = "exit menu" onClick={hideMenu}></img></li>
-                            <li><a href="addBook">add book</a></li>
-                            <li><a href="books">books</a></li>
-                            <li><a href="#">genres</a></li>
-                        <li><a href="#">about</a></li>
+                            <li><Link to="/addBook">add book</Link></li>
+                            <li><Link to="/books">books</Link></li>
+                            <li><Link to="/">genres</Link></li>
+                        <li><Link to="/">search</Link></li>
 
                         </ul>
                     </nav>

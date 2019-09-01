@@ -13,7 +13,6 @@ class AllBooks extends Component {
     static service = new BooksService();
     
     async componentDidMount(){
-        console.log('heelo')
         try{
             const books = await AllBooks.service.getAllBooks();
             this.setState({books});
@@ -41,17 +40,15 @@ class AllBooks extends Component {
 
     return (
         <Fragment>
-        <h2 align="center">Our Books:</h2>
+        <h2 align="center" className = "headline">Our Books:</h2>
         <br />
-        <div className="row">
-            <div className="card-deck space-top">
+            <div className = "cards">
                 {
                     books.map(book => (
                         <BookCard key={book.id}{...book} />
                     ))
                 }
             </div>
-        </div>
     </Fragment>
     );
     }

@@ -12,6 +12,41 @@ code {
     font-family: source-code-pro, Menlo, Monaco, Consolas, "Courier New", monospace;
 }
 
+.cardDiv{
+    width:20%;
+    margin-right:0;
+    padding:0;
+}
+
+.headline {
+    font-size: 2em;
+    color: #070D0D;
+
+}
+
+.cardDiv h2 {
+    text-align: center;
+
+}
+
+
+.cards{
+    width: 100%;
+}
+
+.cards div{
+    display: inline-block;
+    text-align: center;
+    margin:2%;
+    padding:0;
+
+}
+
+.card-title{
+    text-align: center;
+    color: #707070;
+}
+
 p {
     font-size: .9em;
     line-height: 1.6em;
@@ -72,6 +107,8 @@ h1,
     transform: skewY(-2deg);
     z-index: 3;
 }
+
+
 
 .blue-container:before {
     content: "";
@@ -189,7 +226,7 @@ ul.footer-links li a {
 
 nav ul {
     position: fixed;
-    width: 60%;
+    width: 70%;
     top: 0;
     right: 0;
     text-align: left;
@@ -199,11 +236,13 @@ nav ul {
     padding-top: 3em;
 }
 
+
+
 nav ul li a {
     color: white;
     text-decoration: none;
     display: block;
-    width: 100%;
+    width: 70%;
     padding: 1em 2em;
     background-color: rgb(52, 59, 63)
 }

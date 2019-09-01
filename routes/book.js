@@ -39,6 +39,7 @@ function validateBookCreateForm(payload) {
     errors
   }
 }
+
 router.post('/create', (req, res) => {
   const bookObj = req.body
   const validationResult = validateBookCreateForm(bookObj)
@@ -104,6 +105,37 @@ router.post('/create', (req, res) => {
     )()
 
   }
+})
+
+router.get ('/:id', (req,res)=>{
+  const bookId = req.params.id;
+  const genreBook='';
+  const titleBook='';
+  let dateCreatedBook ;
+   
+  
+  // Book
+  //     .create(bookObj)
+  //     .then((createdBook) => {
+  //       res.status(200).json({
+  //         success: true,
+  //         message: 'Book added successfully.',
+  //         data: createdBook
+  //       })
+  //     })
+  const findBookInfo =  (() => {
+   return Book.findById(bookId)
+    .then(existingBook =>{
+      res.status(200).json({
+        success: true,
+        message: 'Book info retrieved successfully.',
+        data: existingBook
+      })
+    })
+  })();
+
+  console.log(findBookInfo)
+
 })
 
 router.post('/edit/:id', authCheck, (req, res) => {
@@ -266,4 +298,4 @@ router.delete('/delete/:id', authCheck, (req, res) => {
   }
 })
 
-module.exports = router
+module.exports = router;

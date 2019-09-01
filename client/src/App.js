@@ -36,8 +36,8 @@ class App extends Component {
           <Navbar />
           <Switch>
             <Route path="/" exact component = {Home}/>
-            <Route path="/addBook" exact component={CreateBook} />
-            <Route path="/books" exact component = {AllBooks} />
+            <Route path="/addBook"  component={CreateBook} />
+            <Route path="/books"  component = {AllBooks} />
           </Switch>
         </Fragment>
       </Router>
