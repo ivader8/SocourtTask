@@ -41,6 +41,7 @@ class AllBooks extends Component {
     return (
         <Fragment>
         <h2 align="center" className = "headline">Our Books:</h2>
+        <div className="bookInfo"></div>
         <br />
             <div className = "cards">
                 {

@@ -21,17 +21,16 @@ code {
 .headline {
     font-size: 2em;
     color: #070D0D;
-
+    margin-top: 40px;
 }
 
 .cardDiv h2 {
     text-align: center;
-
 }
-
 
 .cards{
     width: 100%;
+    margin-left: 2%;
 }
 
 .cards div{

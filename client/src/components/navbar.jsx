@@ -20,6 +20,11 @@ export default class Navbar extends Component {
         nav.classList.add('hide-mobile');
     }
 
+    function openSearchMenu(e){
+        e.preventDefault();
+
+    }
+
 
         return (
             <div className="container">
@@ -36,7 +41,7 @@ export default class Navbar extends Component {
                             <li><Link to="/addBook">add book</Link></li>
                             <li><Link to="/books">books</Link></li>
                             <li><Link to="/">genres</Link></li>
-                        <li><Link to="/">search</Link></li>
+                        <li><Link to="/" onClick={openSearchMenu}>search</Link></li>
 
                         </ul>
                     </nav>
