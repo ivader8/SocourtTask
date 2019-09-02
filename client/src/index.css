@@ -160,17 +160,61 @@ h1,
 
 .cta {
     background-color: #00cc80;
+    align-content: center;
+    text-align: center;
     width: calc( 100% - 1em);
     display: block;
     color: white;
     border-radius: 20px;
-    padding: .5em;
+    /* padding: 55em; */
     text-decoration: none;
     font-size: 1.5em;
     margin: 3% auto 7%;
     position: relative;
     z-index: 4;
 }
+
+.inline-radio {
+	display: flex;
+  /* border-radius: 3px;
+	overflow: hidden;
+  border: 1px solid #b6b6b6; */
+
+    
+}
+
+fieldset {
+    border: 0;
+}
+
+.radioInput {
+size: 0.5em;
+padding:0;
+margin:0;
+
+}
+
+#radio  {
+	float: right;
+    display: inline
+} 
+
+radio {
+    display: inline;
+}
+#radio input {
+	width: auto;
+	margin-left: 3em;
+}
+
+.inline-radio div {
+    
+        position: relative;
+        flex: 1;
+        
+}
+
+
 
 .footer-container {
     width: 100%;
@@ -226,7 +270,7 @@ ul.footer-links li a {
 .sidenav {
     height: 100%;
     width: 0;
-    position: absolute;
+    position: fixed;
     z-index: 1;
     top: 0;
     right: 0;
@@ -237,10 +281,27 @@ ul.footer-links li a {
   }
   
   .sidenav a {
-    padding: 8px 8px 8px 32px;
+    padding: 8px 8px 0px 32px;
     text-decoration: none;
     font-size: 25px;
     color: #faf8f8;
+    display: block;
+    transition: 0.3s;
+  }
+
+  .sidenav input{
+    border-radius: 15px;
+    background-color: rgb(236, 244, 252);
+    border: 0;
+    width: 70%;
+    margin:0;
+    align-content: center;
+    text-align: center;
+    padding: 8px 8px 8px 8px;
+    margin:0 0 0 1.2em;
+    text-decoration: none;
+    font-size: 25px;
+    color: #535353;
     display: block;
     transition: 0.3s;
   }
@@ -418,7 +479,7 @@ nav ul li a:hover {
     }
     .container {
         width: 80%;
-        /* padding: 0; */
+        padding: 0;
     }
     .blue-container {
         padding: 7em 0 2em;

@@ -8,7 +8,7 @@ export default class Navbar extends Component {
     state = {
         searchLinkStyle: '',
         mySideNavStyle: 'none'
-      };
+    };
 
     render() {
         function showMenu(e) {
@@ -21,22 +21,22 @@ export default class Navbar extends Component {
             e.preventDefault();
             let nav = document.getElementById('nav');
             nav.classList.add('hide-mobile');
-        }       
+        }
 
         let openNav = (e) => {
-            e.preventDefault();        
-            this.setState({searchLinkStyle:'none', mySideNavStyle: ''});
-            document.getElementById("mySidenav").style.width = "250px";
-            
-          }
-          
-        let closeNav= (e)=> {
             e.preventDefault();
-            this.setState({searchLinkStyle:'', mySideNavStyle: 'none'});
+            this.setState({ searchLinkStyle: 'none', mySideNavStyle: '' });
+            document.getElementById("mySidenav").style.width = "250px";
+
+        }
+
+        let closeNav = (e) => {
+            e.preventDefault();
+            this.setState({ searchLinkStyle: '', mySideNavStyle: 'none' });
             document.getElementById("mySidenav").style.width = "0";
-          }
-      
-        
+        }
+
+
 
         return (
             <div className="container">
@@ -53,16 +53,34 @@ export default class Navbar extends Component {
                             <li><Link to="/addBook">add book</Link></li>
                             <li><Link to="/books">books</Link></li>
                             <li><Link to="/">genres</Link></li>
+
                             <li>
                                 <Link to="#" onClick={openNav}
-                                style={{display: this.state.searchLinkStyle }}>search</Link>
-                                <div id="mySidenav" className="sidenav" 
-                                style={{display: this.state.mySideNavStyle }}>
+                                    style={{ display: this.state.searchLinkStyle }}>search</Link>
+
+                                <div id="mySidenav" className="sidenav"
+                                    style={{ display: this.state.mySideNavStyle }}>
                                     <a href="javascript:void(0)" className="closebtn" onClick={closeNav}>&times;</a>
-                                    <a href="#">About</a>
-                                    <a href="#">Services</a>
-                                    <a href="#">Clients</a>
-                                    <a href="#">Contact</a>
+                                    <br />
+                                    <br />
+                                    <br />
+
+                                    <fieldset>
+            <input class="radioInput" type="radio" name="payment_method" value="bookRadioField"/><label>Book</label>                            
+            </fieldset>
+            
+            <fieldset>
+            <input class="radioInput" type="radio" name="payment_method" value="genreRadioField" checked="checked"/><label>Genre</label>
+            </fieldset>
+
+                                    {/* <div><input type="radio" name="title"/><label>Genre</label></div>	 */}
+
+                                    {/* <span class="radio"><input type="radio" name="gender" value="bookRadio" />Book</span>
+                                            <input type="radio" name="gender" value="genreRadio" />Genre
+                                    <input type="text" name="Book" id="bookInputField" placeholder="Enter Value"></input>
+                                            <br></br> */}
+
+                                    <a href="#" className="cta">Search</a>
                                 </div>
                             </li>
 
