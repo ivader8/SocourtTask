@@ -65,7 +65,7 @@ class CreateBook extends Component {
 
         return (
             <main>
-                <div class="container">
+                <div className="container">
                     {
                         error.length
                             ? <div>Something went wrong: {error}</div>
@@ -73,17 +73,17 @@ class CreateBook extends Component {
                     }
                     <h1>Create New Product</h1>
                     <form onSubmit={this.handleSubmit}>
-                        <div class="form-group">
+                        <div className="form-group">
                             <label for="title">Title</label>
                             <input type="text" name="title" id="title"
                                 placeholder="Enter product title" value={title} onChange={this.handleChange} />
                         </div>
-                        <div class="form-group">
+                        <div className="form-group">
                             <label for="genre">Genre</label>
                             <input type="text" name="genre" id="genre"
                                 placeholder="Enter genre of the book" value={genre} onChange={this.handleChange} />
                         </div>
-                        <div class="form-group">
+                        <div className="form-group">
                             <label for="description">Author</label>
                             <input type="text" name="author"
                                 id="author" placeholder="Enter book author" value={author} onChange={this.handleChange} />

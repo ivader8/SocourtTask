@@ -5,26 +5,38 @@ import ham from '../images/ham.svg'
 import exit from '../images/exit.svg'
 
 export default class Navbar extends Component {
-     
+    state = {
+        searchLinkStyle: '',
+        mySideNavStyle: 'none'
+      };
 
     render() {
-        function showMenu(e){
-        e.preventDefault();
-        let nav = document.getElementById('nav');
-        nav.classList.toggle('hide-mobile');
-    }
+        function showMenu(e) {
+            e.preventDefault();
+            let nav = document.getElementById('nav');
+            nav.classList.toggle('hide-mobile');
+        }
 
-    function hideMenu(e){
-        e.preventDefault();
-        let nav = document.getElementById('nav');
-        nav.classList.add('hide-mobile');
-    }
+        function hideMenu(e) {
+            e.preventDefault();
+            let nav = document.getElementById('nav');
+            nav.classList.add('hide-mobile');
+        }       
 
-    function openSearchMenu(e){
-        e.preventDefault();
-
-    }
-
+        let openNav = (e) => {
+            e.preventDefault();        
+            this.setState({searchLinkStyle:'none', mySideNavStyle: ''});
+            document.getElementById("mySidenav").style.width = "250px";
+            
+          }
+          
+        let closeNav= (e)=> {
+            e.preventDefault();
+            this.setState({searchLinkStyle:'', mySideNavStyle: 'none'});
+            document.getElementById("mySidenav").style.width = "0";
+          }
+      
+        
 
         return (
             <div className="container">
@@ -37,14 +49,27 @@ export default class Navbar extends Component {
 
                         <ul className="show-desktop hide-mobile" id="nav">
                             <li id="exit" className="exit-btn hide-desktop">
-                                <img src={exit} alt = "exit menu" onClick={hideMenu}></img></li>
+                                <img src={exit} alt="exit menu" onClick={hideMenu}></img></li>
                             <li><Link to="/addBook">add book</Link></li>
                             <li><Link to="/books">books</Link></li>
                             <li><Link to="/">genres</Link></li>
-                        <li><Link to="/" onClick={openSearchMenu}>search</Link></li>
+                            <li>
+                                <Link to="#" onClick={openNav}
+                                style={{display: this.state.searchLinkStyle }}>search</Link>
+                                <div id="mySidenav" className="sidenav" 
+                                style={{display: this.state.mySideNavStyle }}>
+                                    <a href="javascript:void(0)" className="closebtn" onClick={closeNav}>&times;</a>
+                                    <a href="#">About</a>
+                                    <a href="#">Services</a>
+                                    <a href="#">Clients</a>
+                                    <a href="#">Contact</a>
+                                </div>
+                            </li>
+
 
                         </ul>
                     </nav>
+
                 </header>
             </div>
 

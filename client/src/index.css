@@ -223,9 +223,43 @@ ul.footer-links li a {
     font-size: .8em;
 }
 
+.sidenav {
+    height: 100%;
+    width: 0;
+    position: absolute;
+    z-index: 1;
+    top: 0;
+    right: 0;
+    background-color: #59A7EB;
+    overflow-x: hidden;
+    transition: 0.5s;
+    padding-top: 60px;
+  }
+  
+  .sidenav a {
+    padding: 8px 8px 8px 32px;
+    text-decoration: none;
+    font-size: 25px;
+    color: #faf8f8;
+    display: block;
+    transition: 0.3s;
+  }
+  
+  .sidenav a:hover {
+    color: #f1f1f1;
+  }
+  
+  .sidenav .closebtn {
+    position: absolute;
+    top: 0;
+    right: 25px;
+    font-size: 36px;
+    margin-left: 50px;
+  }
+
 nav ul {
     position: fixed;
-    width: 70%;
+    width: 50%;
     top: 0;
     right: 0;
     text-align: left;
@@ -234,7 +268,6 @@ nav ul {
     z-index: 7;
     padding-top: 3em;
 }
-
 
 
 nav ul li a {
@@ -263,6 +296,16 @@ nav ul li a:hover {
 }
 
 @media only screen and (min-width: 650px) {
+
+    .sidenav {
+        padding-top: 15px;
+    }
+
+    .sidenav a {
+        font-size: 18px;
+    }
+
+    
     .piggyBank {
         width: 50%
     }
