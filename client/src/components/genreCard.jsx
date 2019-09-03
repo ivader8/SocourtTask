@@ -2,15 +2,15 @@ import React, { Fragment } from 'react'
 
 
 
-const BookCard = ({ title, _id }) => {
+const GenreCard = ({ name, _id }) => {
 
-    const addressToRedirect = "/book/" + _id;
+    const addressToRedirect = "/genre/" + _id;
 
     return (
         <Fragment >
 
             <div className="cardDiv">
-                <h5 className="card-title">{title}</h5>
+                <h5 className="card-title">{name}</h5>
                 <a href={addressToRedirect} type="submit" className="btn btn-warning float-right btn-sm">
                     Get more info
                 </a>
@@ -20,8 +20,4 @@ const BookCard = ({ title, _id }) => {
 
 };
 
-export default BookCard;
-
-
-
-
+export default GenreCard;

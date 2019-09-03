@@ -6,6 +6,9 @@ import CreateBook from './components/create-book';
 import Navbar from './components/navbar';
 import Home from './components/home';
 import AllBooks from './components/allBooks';
+import BookInfo from './components/bookInfo';
+import AllGenres from './components/allGenres';
+import GenreInfo from './components/genreInfo';
 
 
 class App extends Component {
@@ -13,20 +16,6 @@ class App extends Component {
     response: ''
   };
 
-  // componentDidMount() {
-  //   this.callApi()
-  //     .then(res => this.setState({ response: res.express }))
-  //     .catch(err => console.log(err));
-  // }
-
-  // callApi = async () => {
-  //   const response = await fetch('/api/hello');
-  //   const body = await response.json();
-
-  //   if (response.status !== 200) throw Error(body.message);
-
-  //   return body;
-  // };
 
   render() {
     return (
@@ -38,6 +27,11 @@ class App extends Component {
             <Route path="/" exact component = {Home}/>
             <Route path="/addBook"  component={CreateBook} />
             <Route path="/books"  component = {AllBooks} />
+            <Route path = "/book/:id" component = {BookInfo}/>
+            <Route path="/genres"  component = {AllGenres} />
+            <Route path = "/genre/:id" component = {GenreInfo}/>
+
+
           </Switch>
         </Fragment>
       </Router>

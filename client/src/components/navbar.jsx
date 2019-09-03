@@ -50,9 +50,9 @@ export default class Navbar extends Component {
                         <ul className="show-desktop hide-mobile" id="nav">
                             <li id="exit" className="exit-btn hide-desktop">
                                 <img src={exit} alt="exit menu" onClick={hideMenu}></img></li>
-                            <li><Link to="/addBook">add book</Link></li>
+                            <li><Link to="/addBook">create</Link></li>
                             <li><Link to="/books">books</Link></li>
-                            <li><Link to="/">genres</Link></li>
+                            <li><Link to="/genres">genres</Link></li>
 
                             <li>
                                 <Link to="#" onClick={openNav}
@@ -62,24 +62,11 @@ export default class Navbar extends Component {
                                     style={{ display: this.state.mySideNavStyle }}>
                                     <a href="javascript:void(0)" className="closebtn" onClick={closeNav}>&times;</a>
                                     <br />
-                                    <br />
-                                    <br />
+                                   
 
-                                    <fieldset>
-            <input class="radioInput" type="radio" name="payment_method" value="bookRadioField"/><label>Book</label>                            
-            </fieldset>
-            
-            <fieldset>
-            <input class="radioInput" type="radio" name="payment_method" value="genreRadioField" checked="checked"/><label>Genre</label>
-            </fieldset>
-
-                                    {/* <div><input type="radio" name="title"/><label>Genre</label></div>	 */}
-
-                                    {/* <span class="radio"><input type="radio" name="gender" value="bookRadio" />Book</span>
-                                            <input type="radio" name="gender" value="genreRadio" />Genre
-                                    <input type="text" name="Book" id="bookInputField" placeholder="Enter Value"></input>
-                                            <br></br> */}
-
+                                   
+                                    <input id ="bookInput" placeholder="Book Title"/> 
+                                    <input id ="genreInput" placeholder="Genre Title"/> 
                                     <a href="#" className="cta">Search</a>
                                 </div>
                             </li>

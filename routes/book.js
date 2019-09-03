@@ -13,7 +13,6 @@ function validateBookCreateForm(payload) {
   let isFormValid = true
   let message = ''
 
-  // payload.price = parseFloat(payload.price)
 
   if (!payload || typeof payload.title !== 'string' || payload.title.length < 2) {
     isFormValid = false
@@ -113,16 +112,6 @@ router.get ('/:id', (req,res)=>{
   const titleBook='';
   let dateCreatedBook ;
    
-  
-  // Book
-  //     .create(bookObj)
-  //     .then((createdBook) => {
-  //       res.status(200).json({
-  //         success: true,
-  //         message: 'Book added successfully.',
-  //         data: createdBook
-  //       })
-  //     })
   const findBookInfo =  (() => {
    return Book.findById(bookId)
     .then(existingBook =>{
@@ -133,9 +122,6 @@ router.get ('/:id', (req,res)=>{
       })
     })
   })();
-
-  console.log(findBookInfo)
-
 })
 
 router.post('/edit/:id', authCheck, (req, res) => {

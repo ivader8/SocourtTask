@@ -1,13 +1,8 @@
 import React, { Component } from 'react'
-import { Redirect } from 'react-router-dom'
-
-import CreateService from '../services/createService';
-// import { UserConsumer } from './contexts/user-context';
 import { post } from '../data/crud';
 
 
 class CreateBook extends Component {
-    static createService = new CreateService();
 
     state = {
         title: '',
