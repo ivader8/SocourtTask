@@ -2,14 +2,12 @@ import React, { Component } from 'react';
 import { get } from '../data/crud';
 
 class GenreInfo extends Component {
+
     state = {
         name: '',
         books: [],
         dataCreated: '',
         lastUpdated: ''
-
-
-        //_id, name, books[], lastUpdated, dataCreated
     }
 
     async componentDidMount() {
@@ -36,13 +34,9 @@ class GenreInfo extends Component {
 
 
     render() {
-
-        // const { genre } = this.state;
-        // const title = book.data.author;
-
         return (
             <div>
-                <table className ="bookInfo">
+                <table className="bookInfo">
                     <th colSpan="2" align="center">Genre information</th>
                     <tbody>
                         <tr><td>Name:</td><td>{this.state.name}</td></tr>

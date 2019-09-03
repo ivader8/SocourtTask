@@ -1,5 +1,5 @@
 import React, { Component } from 'react'
-import { Link ,Route, Redirect} from 'react-router-dom'
+import { Link, Route, Redirect } from 'react-router-dom'
 import logo from '../images/logo.svg'
 import ham from '../images/ham.svg'
 import exit from '../images/exit.svg'
@@ -11,7 +11,7 @@ export default class Navbar extends Component {
         searchBooksButtonClicked: false,
         searchGenreButtonClicked: false,
         bookSearchInput: '',
-        genreSearchInput:''
+        genreSearchInput: ''
     };
     handleChange = ({ target }) => {
         this.setState({
@@ -46,26 +46,25 @@ export default class Navbar extends Component {
         }
 
         let searchBookHandler = (e) => {
-            e.preventDefault;
-            this.setState({searchBooksButtonClicked: true})
+            e.preventDefault();
+            this.setState({ searchBooksButtonClicked: true })
         }
-        
+
         let searchGenreHandler = (e) => {
-            e.preventDefault;
-            this.setState({searchGenreButtonClicked: true})
+            e.preventDefault();
+            this.setState({ searchGenreButtonClicked: true })
         }
 
+        const { bookSearchInput, genreSearchInput } = this.state;
 
-        const{bookSearchInput, genreSearchInput}= this.state;
-
-        if (this.state.searchBooksButtonClicked){
+        if (this.state.searchBooksButtonClicked) {
             return (
                 <Route render={() => <Redirect to={{
                     pathname: '/books/search',
                     state: { id: bookSearchInput }
                 }} />} />
             )
-        } else if (this.state.searchGenreButtonClicked){
+        } else if (this.state.searchGenreButtonClicked) {
             return (
                 <Route render={() => <Redirect to={{
                     pathname: '/genres/search',
@@ -73,8 +72,6 @@ export default class Navbar extends Component {
                 }} />} />
             )
         }
-        
-
 
         return (
             <div className="container">
@@ -101,25 +98,20 @@ export default class Navbar extends Component {
                                     <a href="javascript:void(0)" className="closebtn" onClick={closeNav}>&times;</a>
                                     <br />
 
-                                    <input id="bookSearchInput" 
-                                    placeholder="Book Title" name ="bookSearchInput" 
-                                    value = {bookSearchInput} onChange={this.handleChange}/>
-                                    <label className="cta" onClick = {searchBookHandler}>Search</label>
-                                    <input id="genreSearchInput" 
-                                    placeholder="Genre Name" name="genreSearchInput"
-                                    value = {genreSearchInput} onChange={this.handleChange}/>
-                                    <label href="#" className="cta" onClick = {searchGenreHandler}>Search</label>
+                                    <input id="bookSearchInput"
+                                        placeholder="Book Title" name="bookSearchInput"
+                                        value={bookSearchInput} onChange={this.handleChange} />
+                                    <label className="cta" onClick={searchBookHandler}>Search</label>
+                                    <input id="genreSearchInput"
+                                        placeholder="Genre Name" name="genreSearchInput"
+                                        value={genreSearchInput} onChange={this.handleChange} />
+                                    <label href="#" className="cta" onClick={searchGenreHandler}>Search</label>
                                 </div>
-
                             </li>
-
-
                         </ul>
                     </nav>
-
                 </header>
             </div>
-
         )
     }
 }

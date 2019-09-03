@@ -39,7 +39,7 @@ class CreateBook extends Component {
 
                         throw new Error(errors);
                     }
-                    
+
                     this.setState({
                         title: '',
                         genre: '',
@@ -69,22 +69,22 @@ class CreateBook extends Component {
                     <h1>Create New Product</h1>
                     <form onSubmit={this.handleSubmit}>
                         <div className="form-group">
-                            <label for="title">Title</label>
+                            <label htmlFor="title">Title</label>
                             <input type="text" name="title" id="title"
                                 placeholder="Enter product title" value={title} onChange={this.handleChange} />
                         </div>
                         <div className="form-group">
-                            <label for="genre">Genre</label>
+                            <label htmlFor="genre">Genre</label>
                             <input type="text" name="genre" id="genre"
                                 placeholder="Enter genre of the book" value={genre} onChange={this.handleChange} />
                         </div>
                         <div className="form-group">
-                            <label for="description">Author</label>
+                            <label htmlFor="description">Author</label>
                             <input type="text" name="author"
                                 id="author" placeholder="Enter book author" value={author} onChange={this.handleChange} />
                         </div>
-                        
-                        
+
+
                         <input type="submit" value="Create" />
                     </form>
                 </div>
@@ -92,26 +92,7 @@ class CreateBook extends Component {
         )
     }
 
-}
-
-// const CreateBookWithContext = (props) => {
-//     return (
-//         <UserConsumer>
-//             {
-//                 ({ isLoggedIn }) => (
-
-//                     <CreateBook
-//                         {...props}
-//                         isLoggedIn={isLoggedIn}
-
-//                     />
-//                 )
-//             }
-//         </UserConsumer>
-//     )
-// }
-
-// export default CreateBookWithContext;
+}    
 
 
 export default CreateBook;

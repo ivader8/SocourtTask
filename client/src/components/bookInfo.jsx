@@ -8,17 +8,13 @@ class BookInfo extends Component {
         author: '',
         dataCreated: '',
         lastUpdated: ''
-
-
     }
 
     async componentDidMount() {
+
         try {
-
-
             const url = window.location.href;
             const idStr = url.substring(27);
-
 
             const book = await get('http://localhost:5000/api/book/' + idStr);
             console.log(book)
@@ -30,19 +26,15 @@ class BookInfo extends Component {
                 author: book.data.author,
                 dataCreated: book.data.dataCreated.substring(0, 10),
                 lastUpdated: book.data.lastUpdated.substring(0, 10)
-
             })
         } catch (error) {
             console.log(error);
         }
+
     }
 
 
     render() {
-
-        const { book } = this.state;
-        // const title = book.data.author;
-
         return (
             <div>
                 <table className="bookInfo">

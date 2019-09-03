@@ -1,5 +1,4 @@
 const express = require('express')
-const authCheck = require('../config/auth-check')
 const Book = require('../models/Book')
 const Genre = require('../models/Genre.js')
 
@@ -124,7 +123,7 @@ router.get ('/:id', (req,res)=>{
   })();
 })
 
-router.post('/edit/:id', authCheck, (req, res) => {
+router.post('/edit/:id', (req, res) => {
   if (req.user.roles.indexOf('Admin') > -1) {
     const bookId = req.params.id
     const bookObj = req.body
@@ -192,7 +191,7 @@ router.get('/all', (req, res) => {
     })
 })
 
-router.post('/review/:id', authCheck, (req, res) => {
+router.post('/review/:id', (req, res) => {
   const id = req.params.id
   const review = req.body.review
   const username = req.user.username
@@ -255,7 +254,7 @@ router.post('/review/:id', authCheck, (req, res) => {
 
 
 
-router.delete('/delete/:id', authCheck, (req, res) => {
+router.delete('/delete/:id', (req, res) => {
   const id = req.params.id
   if (req.user.roles.indexOf('Admin') > -1) {
     Book

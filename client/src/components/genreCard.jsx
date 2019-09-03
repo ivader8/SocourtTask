@@ -1,7 +1,5 @@
 import React, { Fragment } from 'react'
 
-
-
 const GenreCard = ({ name, _id }) => {
 
     const addressToRedirect = "/genre/" + _id;

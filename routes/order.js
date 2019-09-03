@@ -1,10 +1,9 @@
 const express = require('express')
-const authCheck = require('../config/auth-check')
 const Order = require('../models/Genre')
 
 const router = new express.Router()
 
-router.post('/submit', authCheck, (req, res) => {
+router.post('/submit', (req, res) => {
   const products = req.body
   let orderObj = {
     // creator: req.user._id,
@@ -34,7 +33,7 @@ router.post('/submit', authCheck, (req, res) => {
     })
 })
 
-router.get('/user', authCheck, (req, res) => {
+router.get('/user', (req, res) => {
   Order
     .find({creator: req.user._id})
     .then(orders => {
@@ -42,7 +41,7 @@ router.get('/user', authCheck, (req, res) => {
     })
 })
 
-router.get('/allOrders', authCheck, (req,res)=>{
+router.get('/allOrders', (req,res)=>{
   if (req.user.roles.indexOf('Admin') > -1) {
     Order
     .find()
@@ -53,7 +52,7 @@ router.get('/allOrders', authCheck, (req,res)=>{
   }
 })
 
-router.get('/pending', authCheck, (req, res) => {
+router.get('/pending', (req, res) => {
   if (req.user.roles.indexOf('Admin') > -1) {
     Order
       .find({status: 'Pending'})
@@ -68,7 +67,7 @@ router.get('/pending', authCheck, (req, res) => {
   }
 })
 
-router.post('/approve/:id', authCheck, (req, res) => {
+router.post('/approve/:id', (req, res) => {
   const orderId = req.params.id
   Order
     .findById(orderId)

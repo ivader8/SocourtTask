@@ -53,8 +53,6 @@ class AllBooks extends Component {
             </Fragment>
         );
     }
-
-
 }
 
 
