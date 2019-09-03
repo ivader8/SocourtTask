@@ -10,7 +10,8 @@ export default class Navbar extends Component {
         mySideNavStyle: 'none',
         searchBooksButtonClicked: false,
         searchGenreButtonClicked: false,
-        bookSearchInput: ''
+        bookSearchInput: '',
+        genreSearchInput:''
     };
     handleChange = ({ target }) => {
         this.setState({
@@ -46,12 +47,16 @@ export default class Navbar extends Component {
 
         let searchBookHandler = (e) => {
             e.preventDefault;
-            console.log('sdf');
             this.setState({searchBooksButtonClicked: true})
-            console.log(this.state.searchBooksButtonClicked)
-
         }
-        const{bookSearchInput}= this.state;
+        
+        let searchGenreHandler = (e) => {
+            e.preventDefault;
+            this.setState({searchGenreButtonClicked: true})
+        }
+
+
+        const{bookSearchInput, genreSearchInput}= this.state;
 
         if (this.state.searchBooksButtonClicked){
             return (
@@ -59,7 +64,13 @@ export default class Navbar extends Component {
                     pathname: '/books/search',
                     state: { id: bookSearchInput }
                 }} />} />
-                // <Redirect to="/books"/>
+            )
+        } else if (this.state.searchGenreButtonClicked){
+            return (
+                <Route render={() => <Redirect to={{
+                    pathname: '/genres/search',
+                    state: { id: genreSearchInput }
+                }} />} />
             )
         }
         
@@ -94,8 +105,10 @@ export default class Navbar extends Component {
                                     placeholder="Book Title" name ="bookSearchInput" 
                                     value = {bookSearchInput} onChange={this.handleChange}/>
                                     <label className="cta" onClick = {searchBookHandler}>Search</label>
-                                    <input id="genreSearchInput" placeholder="Genre Name" />
-                                    <label href="#" className="cta">Search</label>
+                                    <input id="genreSearchInput" 
+                                    placeholder="Genre Name" name="genreSearchInput"
+                                    value = {genreSearchInput} onChange={this.handleChange}/>
+                                    <label href="#" className="cta" onClick = {searchGenreHandler}>Search</label>
                                 </div>
 
                             </li>

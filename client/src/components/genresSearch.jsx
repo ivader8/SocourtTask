@@ -3,7 +3,7 @@ import Navbar from './navbar';
 import BookCard from './bookCard';
 import {post} from '../data/crud'
 
-class BooksSearch extends Component {
+class GenresSearch extends Component {
 
     state = {
         books: [],
@@ -18,9 +18,14 @@ class BooksSearch extends Component {
         try {      
             const {searchParam} = this.state;    
             const books = await post("http://localhost:5000/api/books");
+
+
+
             const filteredBooks = books.filter(function(book) {
-                return book.title.includes(searchParam);
+                return book.genre===searchParam;
             });
+
+
             this.setState({ books:filteredBooks });
         } catch (error) {
             console.log(error)
@@ -46,4 +51,4 @@ class BooksSearch extends Component {
     }
 }
 
-export default BooksSearch;
+export default GenresSearch;
