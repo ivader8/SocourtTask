@@ -1,5 +1,5 @@
 import React, { Component } from 'react'
-import { Link, Route, Redirect } from 'react-router-dom'
+import { Link, Redirect } from 'react-router-dom'
 import logo from '../images/logo.svg'
 import ham from '../images/ham.svg'
 import exit from '../images/exit.svg'
@@ -59,17 +59,17 @@ export default class Navbar extends Component {
 
         if (this.state.searchBooksButtonClicked) {
             return (
-                <Route render={() => <Redirect to={{
+                <Redirect to={{
                     pathname: '/books/search',
                     state: { id: bookSearchInput }
-                }} />} />
+                }}  />
             )
         } else if (this.state.searchGenreButtonClicked) {
             return (
-                <Route render={() => <Redirect to={{
+                 <Redirect to={{
                     pathname: '/genres/search',
                     state: { id: genreSearchInput }
-                }} />} />
+                }}/>
             )
         }
 

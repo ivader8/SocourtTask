@@ -45,16 +45,19 @@ class AllBooks extends Component {
         return (
             <Fragment>
                 <Navbar />
-                <h2 align="center" className="headline">Our Books:</h2>
-                <div className="bookInfo"></div>
-                <br />
-                <div className="cards">
-                    {
-                        books.map(book => (
-                            <BookCard key={book._id}{...book} />
-                        ))
-                    }
+                <div className="container">
+                    <h2 align="center" className="headline">Our Books:</h2>
+                    <div className="bookInfo"></div>
+                    <br />
+                    <div className="cards">
+                        {
+                            books.map(book => (
+                                <BookCard key={book._id}{...book} />
+                            ))
+                        }
+                    </div>
                 </div>
+
             </Fragment>
         );
     }

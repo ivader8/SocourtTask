@@ -28,14 +28,16 @@ class BooksSearch extends Component {
         const { books } = this.state;
         return (
             <Fragment>
-                <Navbar/>
-                <h2 align="center" className="headline">Results:</h2>
-                <div className="cards">
-                    {
-                        books.map(book => (
-                            <BookCard key={book._id}{...book} />
-                        ))
-                    }
+                <Navbar />
+                <div className="container">
+                    <h2 align="center" className="headline">Results:</h2>
+                    <div className="cards">
+                        {
+                            books.map(book => (
+                                <BookCard key={book._id}{...book} />
+                            ))
+                        }
+                    </div>
                 </div>
             </Fragment>
         )

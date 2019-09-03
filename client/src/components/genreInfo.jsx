@@ -37,16 +37,18 @@ class GenreInfo extends Component {
     render() {
         return (
             <div>
-                <Navbar/>
-                <table className="bookInfo">
-                    <th colSpan="2" align="center">Genre information</th>
-                    <tbody>
-                        <tr><td>Name:</td><td>{this.state.name}</td></tr>
-                        <tr><td>books:</td><td>{this.state.books.join(', ')}</td></tr>
-                        <tr><td>date created:</td><td>{this.state.dataCreated}</td></tr>
-                        <tr><td>last updated:</td><td>{this.state.lastUpdated}</td></tr>
-                    </tbody>
-                </table>
+                <Navbar />
+                <div className="container">
+                    <table className="bookInfo">
+                        <th colSpan="2" align="center">Genre information</th>
+                        <tbody>
+                            <tr><td>Name:</td><td>{this.state.name}</td></tr>
+                            <tr><td>books:</td><td>{this.state.books.join(', ')}</td></tr>
+                            <tr><td>date created:</td><td>{this.state.dataCreated}</td></tr>
+                            <tr><td>last updated:</td><td>{this.state.lastUpdated}</td></tr>
+                        </tbody>
+                    </table>
+                </div>
             </div>
         )
     }
