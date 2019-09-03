@@ -39,7 +39,6 @@ The server is running on nodeJS / Express
   - Genre: should have a name & dates of creation and last update
 3. Create API Endpoints for:
   - create books (bonus) ```I have to do it even though it's not explcitly asked api/book/create```
-  - kato edit-na book da se promeni last update book i last update na genre na knigata
   - Getting the information about a single book: ```/api/book/:id```
   - Getting a list of all books: ```/api/books```
   - Getting a list of books by genre: ```/api/genre/:id``` 

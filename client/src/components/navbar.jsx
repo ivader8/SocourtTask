@@ -1,5 +1,5 @@
 import React, { Component } from 'react'
-import { Link } from 'react-router-dom'
+import { Link ,Route, Redirect} from 'react-router-dom'
 import logo from '../images/logo.svg'
 import ham from '../images/ham.svg'
 import exit from '../images/exit.svg'
@@ -7,8 +7,16 @@ import exit from '../images/exit.svg'
 export default class Navbar extends Component {
     state = {
         searchLinkStyle: '',
-        mySideNavStyle: 'none'
+        mySideNavStyle: 'none',
+        searchBooksButtonClicked: false,
+        searchGenreButtonClicked: false,
+        bookSearchInput: ''
     };
+    handleChange = ({ target }) => {
+        this.setState({
+            [target.name]: target.value
+        });
+    }
 
     render() {
         function showMenu(e) {
@@ -36,6 +44,25 @@ export default class Navbar extends Component {
             document.getElementById("mySidenav").style.width = "0";
         }
 
+        let searchBookHandler = (e) => {
+            e.preventDefault;
+            console.log('sdf');
+            this.setState({searchBooksButtonClicked: true})
+            console.log(this.state.searchBooksButtonClicked)
+
+        }
+        const{bookSearchInput}= this.state;
+
+        if (this.state.searchBooksButtonClicked){
+            return (
+                <Route render={() => <Redirect to={{
+                    pathname: '/books/search',
+                    state: { id: bookSearchInput }
+                }} />} />
+                // <Redirect to="/books"/>
+            )
+        }
+        
 
 
         return (
@@ -62,13 +89,15 @@ export default class Navbar extends Component {
                                     style={{ display: this.state.mySideNavStyle }}>
                                     <a href="javascript:void(0)" className="closebtn" onClick={closeNav}>&times;</a>
                                     <br />
-                                   
 
-                                   
-                                    <input id ="bookInput" placeholder="Book Title"/> 
-                                    <input id ="genreInput" placeholder="Genre Title"/> 
-                                    <a href="#" className="cta">Search</a>
+                                    <input id="bookSearchInput" 
+                                    placeholder="Book Title" name ="bookSearchInput" 
+                                    value = {bookSearchInput} onChange={this.handleChange}/>
+                                    <label className="cta" onClick = {searchBookHandler}>Search</label>
+                                    <input id="genreSearchInput" placeholder="Genre Name" />
+                                    <label href="#" className="cta">Search</label>
                                 </div>
+
                             </li>
 
 

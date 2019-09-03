@@ -46,14 +46,16 @@ class BookInfo extends Component {
         return (
             <div>
                 <table className="bookInfo">
-                    <th colSpan="2" align="center">Book information</th>
-                    <tbody>
-                        <tr><td>title:</td><td>{this.state.title}</td></tr>
-                        <tr><td>genre:</td><td>{this.state.genre}</td></tr>
-                        <tr><td>author:</td><td>{this.state.author}</td></tr>
-                        <tr><td>date created:</td><td>{this.state.dataCreated}</td></tr>
-                        <tr><td>last updated:</td><td>{this.state.lastUpdated}</td></tr>
-                    </tbody>
+                    <thead>
+                        <th colSpan="2" align="center">Book information</th>
+                        <tbody>
+                            <tr><td>title:</td><td>{this.state.title}</td></tr>
+                            <tr><td>genre:</td><td>{this.state.genre}</td></tr>
+                            <tr><td>author:</td><td>{this.state.author}</td></tr>
+                            <tr><td>date created:</td><td>{this.state.dataCreated}</td></tr>
+                            <tr><td>last updated:</td><td>{this.state.lastUpdated}</td></tr>
+                        </tbody>
+                    </thead>
                 </table>
             </div>
         )

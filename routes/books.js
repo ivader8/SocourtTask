@@ -11,4 +11,12 @@ router.get('/', (req, res) => {
       })
   })
 
+  router.post('/', (req, res) => {
+    Book
+      .find()
+      .then(books => {
+        res.status(200).json(books)
+      })
+  })
+  
   module.exports= router;
