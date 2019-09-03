@@ -31,9 +31,7 @@ class BookInfo extends Component {
         } catch (error) {
             console.log(error);
         }
-
     }
-
 
     render() {
         return (
@@ -53,7 +51,6 @@ class BookInfo extends Component {
                         </tbody>
                     </table>
                 </div>
-
             </div>
         )
     }
