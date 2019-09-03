@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import { get } from '../data/crud';
+import Navbar from './navbar';
 
 class GenreInfo extends Component {
 
@@ -36,6 +37,7 @@ class GenreInfo extends Component {
     render() {
         return (
             <div>
+                <Navbar/>
                 <table className="bookInfo">
                     <th colSpan="2" align="center">Genre information</th>
                     <tbody>

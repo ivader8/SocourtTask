@@ -34,7 +34,7 @@ export default class Navbar extends Component {
 
         let openNav = (e) => {
             e.preventDefault();
-            this.setState({ searchLinkStyle: 'none', mySideNavStyle: '' });
+            this.setState({ searchLinkStyle: '', mySideNavStyle: '' });
             document.getElementById("mySidenav").style.width = "250px";
 
         }

@@ -2,6 +2,7 @@ import React, { Component, Fragment } from 'react'
 import BooksService from '../services/books-service';
 import Loading from './loading';
 import BookCard from './bookCard';
+import Navbar from './navbar';
 
 
 class AllBooks extends Component {
@@ -31,15 +32,19 @@ class AllBooks extends Component {
 
         if (!books.length && !isLoading) {
             return (
-                <div>
-                    <br />
-                    <h2>No books</h2>
-                </div>
+                <Fragment>
+                    <Navbar />
+                    <div>
+                        <br />
+                        <h2>No books</h2>
+                    </div>
+                </Fragment>
             )
         }
 
         return (
             <Fragment>
+                <Navbar />
                 <h2 align="center" className="headline">Our Books:</h2>
                 <div className="bookInfo"></div>
                 <br />

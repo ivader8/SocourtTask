@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import { get } from '../data/crud';
+import Navbar from './navbar';
 
 class BookInfo extends Component {
     state = {
@@ -35,8 +36,9 @@ class BookInfo extends Component {
 
 
     render() {
-        return (
+        return (            
             <div>
+                <Navbar/>
                 <table className="bookInfo">
                     <thead>
                         <th colSpan="2" align="center">Book information</th>

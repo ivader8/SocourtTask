@@ -3,7 +3,6 @@ import { BrowserRouter as Router, Route, Switch } from 'react-router-dom'
 
 import './index.css';
 import CreateBook from './components/create-book';
-import Navbar from './components/navbar';
 import Home from './components/home';
 import AllBooks from './components/allBooks';
 import BookInfo from './components/bookInfo';
@@ -24,7 +23,6 @@ class App extends Component {
 
       <Router>
         <Fragment>
-          <Navbar />
           <Switch>
             <Route path="/" exact component = {Home}/>
             <Route path="/addBook"  component={CreateBook} />
@@ -34,7 +32,6 @@ class App extends Component {
             <Route path = "/book/:id" component = {BookInfo}/>
             <Route path="/genres"  component = {AllGenres} />
             <Route path = "/genre/:id" component = {GenreInfo}/>
-
           </Switch>
         </Fragment>
       </Router>

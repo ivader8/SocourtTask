@@ -2,6 +2,7 @@ import React, { Component, Fragment } from 'react'
 import { get } from '../data/crud';
 import Loading from './loading';
 import GenreCard from './genreCard';
+import Navbar from './navbar';
 
 class AllGenres extends Component {
 
@@ -36,8 +37,9 @@ class AllGenres extends Component {
             )
         }
 
-        return (
+        return (            
             <Fragment>
+                <Navbar/>
                 <h2 align="center" className="headline">Our Genres:</h2>
                 <div></div>
                 <br />

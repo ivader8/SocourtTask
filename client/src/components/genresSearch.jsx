@@ -30,7 +30,7 @@ class GenresSearch extends Component {
         const { books } = this.state;
         return (
             <Fragment>
-                <Navbar></Navbar>
+                <Navbar/>
                 <h2 align="center" className="headline">Results:</h2>
                 <div className="cards">
                     {
